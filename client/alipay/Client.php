@@ -10,16 +10,16 @@ namespace client\alipay;
 
 class Client {
     //应用ID
-    public $appId;
+    public $appId='2016101000651842';
 
     //私钥文件路径
     public $rsaPrivateKeyFilePath;
 
     //私钥值
-    public $rsaPrivateKey;
+    public $rsaPrivateKey='MIICWwIBAAKBgQCtUGrbZcHXZNipn0LIZYXDsdcuoIaN0MtiTevGbmJJ0KrBZxrU7ThAkYAQ5KRMUrftFVRlqVhiZBW/SEB2indVAZ7vXk2E34rF3d8w8BIw669MEDANCAz/YSpXY6RSFV4XTWYIo41BvHrq4c2K4sL43nyc1kQKZKVBneExAXc+YwIDAQABAoGAJXsXsNzfv9IqXPx5N9dkxz6Fl6rVjoPSCC9rxt0GWopK80p17ghjOut8c6rOsUbOSfJr7xRhbd3RKi3Y6wnk5l0zBpo6RpYQxM1pT+pfnENcyx1IF7aQqw/BF29kviOSzl6yZzivjyJdngURWPpyKZvbNUO0oKV/xa143hX6OvkCQQDXg+KY+a4VLw6Kb18SlttolVasWdOOfHklRtloHtxtmCQ+qw69MsKApNXlc+Z6FBthNAFhjGmtq1EIW5+Iq+ulAkEAzd8V/wV4GcExlnuXNCweUEXAZKn4sNjV2IrEAIocL59VMz0i2I7F7oh/G9OU17819ZCxS4lmQx2la+n3uf6DZwJAbBQFtTWxaYo5vo7vnMDus1oBJ1m80H33uwv2x1KCtKtRsePS9mrYQ+9mHTWsZZhjyrFr5+GktaVuc8SPEtk0yQJATJz5rZcWc9cuogbKZVMJ0Ou0RoHul7mKE3TIrj63cI2GAnR89ERlqnhHfU6G9Kcm6IT5RdgTI2Tz+63tT91EfwJAYE6jEr2DlKCADYktIivn90+oCB2zT2X25AO1fpiSId2gZaJpkZBJoVTbHkieRmsuMqBuYgKy2X7Fb5LJUeyg7w==';
 
     //网关
-    public $gatewayUrl = "https://openapi.alipay.com/gateway.do";
+    public $gatewayUrl = "https://openapi.alipaydev.com/gateway.do";
     //返回数据格式
     public $format = "json";
     //api版本
@@ -32,7 +32,7 @@ class Client {
     public $alipayPublicKey = null;
 
     //使用读取字符串格式，请只传递该值
-    public $alipayrsaPublicKey;
+    public $alipayrsaPublicKey='MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIgHnOn7LLILlKETd6BFRJ0GqgS2Y3mn1wMQmyh9zEyWlz5p1zrahRahbXAfCfSqshSNfqOmAQzSHRVjCqjsAw1jyqrXaPdKBmr90DIpIxmIyKXv4GGAkPyJ/6FTFY99uhpiq0qadD/uSzQsefWo0aTvP/65zi3eof7TcZ32oWpwIDAQAB';
 
 
     public $debugInfo = false;
@@ -61,6 +61,8 @@ class Client {
     public $encryptKey;
 
     public $encryptType = "AES";
+
+    public $alipaySdkVersion = 'alipay-sdk-php-20161101';
 
     public function generateSign($params, $signType = "RSA") {
         return $this->sign($this->getSignContent($params), $signType);
@@ -236,11 +238,11 @@ class Client {
 
         if (curl_errno($ch)) {
 
-            throw new Exception(curl_error($ch), 0);
+            throw new \Exception(curl_error($ch), 0);
         } else {
             $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if (200 !== $httpStatusCode) {
-                throw new Exception($reponse, $httpStatusCode);
+                throw new \Exception($reponse, $httpStatusCode);
             }
         }
 
@@ -325,7 +327,7 @@ class Client {
         if (strcasecmp($this->fileCharset, $this->postCharset)) {
 
             // writeLog("本地文件字符集编码与表单提交编码不一致，请务必设置成一样，属性名分别为postCharset!");
-            throw new Exception("文件编码：[" . $this->fileCharset . "] 与表单提交编码：[" . $this->postCharset . "]两者不一致!");
+            throw new \Exception("文件编码：[" . $this->fileCharset . "] 与表单提交编码：[" . $this->postCharset . "]两者不一致!");
         }
 
         $iv=null;
@@ -360,17 +362,17 @@ class Client {
 
             if ($this->checkEmpty($apiParams['biz_content'])) {
 
-                throw new Exception(" api request Fail! The reason : encrypt request is not supperted!");
+                throw new \Exception(" api request Fail! The reason : encrypt request is not supperted!");
             }
 
             if ($this->checkEmpty($this->encryptKey) || $this->checkEmpty($this->encryptType)) {
 
-                throw new Exception(" encryptType and encryptKey must not null! ");
+                throw new \Exception(" encryptType and encryptKey must not null! ");
             }
 
             if ("AES" != $this->encryptType) {
 
-                throw new Exception("加密类型只支持AES");
+                throw new \Exception("加密类型只支持AES");
             }
 
             // 执行加密
@@ -440,7 +442,7 @@ class Client {
         if (strcasecmp($this->fileCharset, $this->postCharset)) {
 
             // writeLog("本地文件字符集编码与表单提交编码不一致，请务必设置成一样，属性名分别为postCharset!");
-            throw new Exception("文件编码：[" . $this->fileCharset . "] 与表单提交编码：[" . $this->postCharset . "]两者不一致!");
+            throw new \Exception("文件编码：[" . $this->fileCharset . "] 与表单提交编码：[" . $this->postCharset . "]两者不一致!");
         }
 
         $iv = null;
@@ -478,17 +480,17 @@ class Client {
 
             if ($this->checkEmpty($apiParams['biz_content'])) {
 
-                throw new Exception(" api request Fail! The reason : encrypt request is not supperted!");
+                throw new \Exception(" api request Fail! The reason : encrypt request is not supperted!");
             }
 
             if ($this->checkEmpty($this->encryptKey) || $this->checkEmpty($this->encryptType)) {
 
-                throw new Exception(" encryptType and encryptKey must not null! ");
+                throw new \Exception(" encryptType and encryptKey must not null! ");
             }
 
             if ("AES" != $this->encryptType) {
 
-                throw new Exception("加密类型只支持AES");
+                throw new \Exception("加密类型只支持AES");
             }
 
             // 执行加密
@@ -513,7 +515,7 @@ class Client {
         //发起HTTP请求
         try {
             $resp = $this->curl($requestUrl, $apiParams);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
             $this->logCommunicationError($sysParams["method"], $requestUrl, "HTTP_ERROR_" . $e->getCode(), $e->getMessage());
             return false;
@@ -1025,7 +1027,7 @@ class Client {
 
             if ($signData == null || $this->checkEmpty($signData->sign) || $this->checkEmpty($signData->signSourceData)) {
 
-                throw new Exception(" check sign Fail! The reason : signData is Empty");
+                throw new \Exception(" check sign Fail! The reason : signData is Empty");
             }
 
 
@@ -1047,12 +1049,12 @@ class Client {
                         $checkResult = $this->verify($signData->signSourceData, $signData->sign, $this->alipayPublicKey, $this->signType);
 
                         if (!$checkResult) {
-                            throw new Exception("check sign Fail! [sign=" . $signData->sign . ", signSourceData=" . $signData->signSourceData . "]");
+                            throw new \Exception("check sign Fail! [sign=" . $signData->sign . ", signSourceData=" . $signData->signSourceData . "]");
                         }
 
                     } else {
 
-                        throw new Exception("check sign Fail! [sign=" . $signData->sign . ", signSourceData=" . $signData->signSourceData . "]");
+                        throw new \Exception("check sign Fail! [sign=" . $signData->sign . ", signSourceData=" . $signData->signSourceData . "]");
                     }
 
                 }
