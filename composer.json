@@ -3,6 +3,7 @@
   "description": "alipay payment",
   "keywords":[ "payment"],
   "version": "1.0.0",
+  "license": "MIT",
   "authors": [
     {
       "name": "shipSun",
