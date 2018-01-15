@@ -1,8 +1,7 @@
 {
   "name":"ship_sun/payment",
   "description": "alipay payment",
-  "keywords":[ "payment"],
-  "version": "1.0.1",
+  "keywords":["payment"],
   "authors": [
     {
       "name": "shipSun",
@@ -13,6 +12,7 @@
     "php": ">=7.0.10"
   },
   "type":"library",
+  "minimum-stability": "master",
   "autoload":{
       "psr-4": {
           "payment\\": "src/"
