@@ -13,7 +13,7 @@
     "php": ">=7.0.10"
   },
   "type":"library",
-  "minimum-stability": "v1.0",
+  "minimum-stability": "v1.0.1",
   "autoload":{
       "psr-4": {
           "payment\\": "src/"
