@@ -1,0 +1,14 @@
+{
+  "name":"shipSun/payment",
+  "description": "alipay payment",
+  "keywords":[
+    "payment"
+  ],
+  "require": {
+    "php": ">=7.0.10"
+  },
+  "type":"library",
+  "autoload":{
+    "payment\\": "payment/"
+  }
+}

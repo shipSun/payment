@@ -6,11 +6,13 @@
  * Time: 15:25
  */
 
-namespace client\alipay;
+namespace payment\client\alipay;
 
-class Client {
+use payment\client\AbstractClient;
+
+class Client extends AbstractClient {
     //应用ID
-    public $appId='2016101000651842';
+    public $appId;
 
     //私钥文件路径
     public $rsaPrivateKeyFilePath;
@@ -433,8 +435,15 @@ class Client {
         return $sHtml;
     }
 
+    public function execute( array $data )
+    {
+        $jsonData = json_encode($data);
+        $this->request->setBizContent($jsonData);
+        $result = $this->executeHandle($this->request);
+        return $this->reponse->parse($result, $this->request);
+    }
 
-    public function execute($request, $authToken = null, $appInfoAuthtoken = null) {
+    public function executeHandle($request, $authToken = null, $appInfoAuthtoken = null) {
 
         $this->setupCharsets($request);
 

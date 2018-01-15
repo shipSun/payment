@@ -5,7 +5,7 @@
  * Date: 15/5/2
  * Time: 下午6:21
  */
-namespace client\alipay;
+namespace payment\client\alipay;
 
 class SignData {
 

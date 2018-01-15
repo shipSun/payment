@@ -1,12 +1,12 @@
 <?php
-namespace request\alipay;
+namespace payment\request\alipay;
 /**
  * ALIPAY API: alipay.fund.trans.toaccount.transfer request
  *
  * @author auto create
  * @since 1.0, 2017-11-14 18:46:52
  */
-class AlipayFundTransToaccountTransferRequest
+class Transfer
 {
 	/** 
 	 * 单笔转账到支付宝账户接口
