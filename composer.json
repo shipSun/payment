@@ -1,5 +1,5 @@
 {
-  "name":"ship/payment",
+  "name":"ship_sun/payment",
   "description": "alipay payment",
   "keywords":[
     "payment"
