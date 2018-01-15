@@ -9,6 +9,8 @@
   },
   "type":"library",
   "autoload":{
-    "payment\\": "payment/"
+      "psr-4": {
+          "payment\\": "payment/"
+      }
   }
 }
