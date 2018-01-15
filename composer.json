@@ -1,8 +1,13 @@
 {
   "name":"ship_sun/payment",
   "description": "alipay payment",
-  "keywords":[
-    "payment"
+  "keywords":[ "payment"],
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "shipSun",
+      "email": "543999860@qq.com"
+    }
   ],
   "require": {
     "php": ">=7.0.10"
