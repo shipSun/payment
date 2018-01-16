@@ -261,6 +261,8 @@ class Client extends AbstractClient {
     protected function logCommunicationError($apiName, $requestUrl, $errorCode, $responseTxt) {
         $localIp = isset ($_SERVER["SERVER_ADDR"]) ? $_SERVER["SERVER_ADDR"] : "CLI";
 
+        $logger->conf["log_file"] = rtrim(AOP_SDK_WORK_DIR, '\\/') . '/' . "logs/aop_comm_err_" . $this->appId . "_" . date("Y-m-d") . ".log";
+        $logger->conf["separator"] = "^_^";
         $logData = array(
             date("Y-m-d H:i:s"),
             $apiName,
@@ -272,7 +274,7 @@ class Client extends AbstractClient {
             $errorCode,
             str_replace("\n", "", $responseTxt)
         );
-        file_put_contents('alipay.log',var_export($logData,true),FILE_APPEND);
+        $logger->log($logData);
     }
 
     /**
