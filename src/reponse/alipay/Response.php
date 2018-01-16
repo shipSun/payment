@@ -13,6 +13,9 @@ class Response
 {
     public function parse($result, $request){
         $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+        if(!$result){
+            throw new \Exception('result返回格式出错');
+        }
         return $result->$responseNode;
     }
 
