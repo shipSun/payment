@@ -18,10 +18,10 @@ class Client extends AbstractClient {
     public $rsaPrivateKeyFilePath;
 
     //私钥值
-    public $rsaPrivateKey='MIICWwIBAAKBgQCtUGrbZcHXZNipn0LIZYXDsdcuoIaN0MtiTevGbmJJ0KrBZxrU7ThAkYAQ5KRMUrftFVRlqVhiZBW/SEB2indVAZ7vXk2E34rF3d8w8BIw669MEDANCAz/YSpXY6RSFV4XTWYIo41BvHrq4c2K4sL43nyc1kQKZKVBneExAXc+YwIDAQABAoGAJXsXsNzfv9IqXPx5N9dkxz6Fl6rVjoPSCC9rxt0GWopK80p17ghjOut8c6rOsUbOSfJr7xRhbd3RKi3Y6wnk5l0zBpo6RpYQxM1pT+pfnENcyx1IF7aQqw/BF29kviOSzl6yZzivjyJdngURWPpyKZvbNUO0oKV/xa143hX6OvkCQQDXg+KY+a4VLw6Kb18SlttolVasWdOOfHklRtloHtxtmCQ+qw69MsKApNXlc+Z6FBthNAFhjGmtq1EIW5+Iq+ulAkEAzd8V/wV4GcExlnuXNCweUEXAZKn4sNjV2IrEAIocL59VMz0i2I7F7oh/G9OU17819ZCxS4lmQx2la+n3uf6DZwJAbBQFtTWxaYo5vo7vnMDus1oBJ1m80H33uwv2x1KCtKtRsePS9mrYQ+9mHTWsZZhjyrFr5+GktaVuc8SPEtk0yQJATJz5rZcWc9cuogbKZVMJ0Ou0RoHul7mKE3TIrj63cI2GAnR89ERlqnhHfU6G9Kcm6IT5RdgTI2Tz+63tT91EfwJAYE6jEr2DlKCADYktIivn90+oCB2zT2X25AO1fpiSId2gZaJpkZBJoVTbHkieRmsuMqBuYgKy2X7Fb5LJUeyg7w==';
+    public $rsaPrivateKey='';
 
     //网关
-    public $gatewayUrl = "https://openapi.alipaydev.com/gateway.do";
+    public $gatewayUrl = "";
     //返回数据格式
     public $format = "json";
     //api版本
@@ -34,7 +34,7 @@ class Client extends AbstractClient {
     public $alipayPublicKey = null;
 
     //使用读取字符串格式，请只传递该值
-    public $alipayrsaPublicKey='MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIgHnOn7LLILlKETd6BFRJ0GqgS2Y3mn1wMQmyh9zEyWlz5p1zrahRahbXAfCfSqshSNfqOmAQzSHRVjCqjsAw1jyqrXaPdKBmr90DIpIxmIyKXv4GGAkPyJ/6FTFY99uhpiq0qadD/uSzQsefWo0aTvP/65zi3eof7TcZ32oWpwIDAQAB';
+    public $alipayrsaPublicKey='';
 
 
     public $debugInfo = false;
