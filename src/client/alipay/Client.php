@@ -932,8 +932,10 @@ class Client extends AbstractClient {
     }
 
     function parserJSONSign($responseJSon) {
-
-        return $responseJSon->sign;
+        if(isset($responseJSon->sign)){
+            return $responseJSon->sign;
+        }
+        return '';
     }
 
     function parserXMLSignData($request, $responseContent) {
