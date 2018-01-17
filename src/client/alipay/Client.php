@@ -194,7 +194,7 @@ class Client extends AbstractClient {
         curl_setopt($ch, CURLOPT_FAILONERROR, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-
+        curl_setopt($ch, CURL_SSLVERSION_TLSv1, false);
         $postBodyString = "";
         $encodeArray = Array();
         $postMultipart = false;
