@@ -22,6 +22,13 @@ abstract class AbstractInterface
     {
         return $this->client->execute( $data);
     }
+    public function pageExecute( array $data)
+    {
+        return $this->client->pageExecute( $data);
+    }
+    public function sdkExecute( array $data){
+        return $this->client->sdkExecute($data);
+    }
     protected function init($payment, $config){
         $clientClass =  $this->getClientClass($payment);
         $this->client = new $clientClass();

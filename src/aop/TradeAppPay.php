@@ -8,7 +8,7 @@
 namespace payment\aop;
 
 
-class Transfer extends AbstractInterface {
+class TradeAppPay extends AbstractInterface {
     protected function getApiName(){
         return 'TradeAppPay';
     }

@@ -16,9 +16,9 @@ class TradeAppPay
 	private $apiParas = array();
 	private $terminalType;
 	private $terminalInfo;
-	private $prodCode;
+	private $prodCode='';
 	private $apiVersion="1.0";
-	private $notifyUrl;
+	private $notifyUrl="";
 	private $returnUrl;
     private $needEncrypt=false;
 

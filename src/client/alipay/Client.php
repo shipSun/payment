@@ -281,7 +281,7 @@ class Client extends AbstractClient {
      * @return string
      * @author guofa.tgf
      */
-    public function sdkExecute($request) {
+    public function sdkExecuteHandle($request) {
 
         $this->setupCharsets($request);
 
@@ -320,7 +320,7 @@ class Client extends AbstractClient {
         @return：构建好的、签名后的最终跳转URL（GET）或String形式的form（POST）
         auther:笙默
     */
-    public function pageExecute($request,$httpmethod = "POST") {
+    public function pageExecuteHandle($request,$httpmethod = "POST") {
 
         $this->setupCharsets($request);
 
@@ -440,7 +440,19 @@ class Client extends AbstractClient {
         $result = $this->executeHandle($this->request);
         return $this->reponse->parse($result, $this->request);
     }
+    public function pageExecute(array $data){
+        $jsonData = json_encode($data);
+        $this->request->setBizContent($jsonData);
+        $result = $this->pageExecuteHandle($this->request);
+        return $result;
+    }
+    public function sdkExecute( array $data){
+        $jsonData = json_encode($data);
+        $this->request->setBizContent($jsonData);
+        $result = $this->sdkExecuteHandle($this->request);
 
+        return $result;
+    }
     public function executeHandle($request, $authToken = null, $appInfoAuthtoken = null) {
 
         $this->setupCharsets($request);
