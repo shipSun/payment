@@ -10,9 +10,9 @@ namespace payment\aop;
 
 abstract class AbstractInterface
 {
-    protected $client;
-    protected $request;
-    protected $reponse;
+    public $client;
+    public $request;
+    public $reponse;
 
     public function client($payment, $config){
         $this->init($payment, $config);
