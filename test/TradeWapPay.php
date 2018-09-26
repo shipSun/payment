@@ -27,6 +27,7 @@ $bizContent['product_code'] = 'QUICK_MSECURITY_PAY';
 
 $traderAppPay = new TradeWapPay();
 
-$data = $traderAppPay->client('alipay', $config)->sdkExecute($bizContent);
-
+$client = $traderAppPay->client('alipay', $config);
+$client->request->setReturnUrl("asfasdf");
+$data = $client->sdkExecute($bizContent);
 var_dump($data);

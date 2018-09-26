@@ -299,7 +299,9 @@ class Client extends AbstractClient {
         if ($notify_url = $request->getNotifyUrl()) {
             $params['notify_url'] = $notify_url;
         }
-
+        if ($return_url = $request->getReturnUrl()) {
+            $params['return_url'] = $return_url;
+        }
         $dict = $request->getApiParas();
         $params['biz_content'] = $dict['biz_content'];
 
